@@ -9,6 +9,7 @@ import djangowars.views
 urlpatterns = patterns('',
                        url(r'^$', djangowars.views.index),
                        url(r'^registrar/$', djangowars.views.registrar), # pagina de cadastro
+                       url(r'^login/$', djangowars.views.logar), # pagina de login
     # Examples:
     # url(r'^$', 'djangowars.views.home', name='home'),
     # url(r'^djangowars/', include('djangowars.foo.urls')),
