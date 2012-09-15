@@ -56,10 +56,10 @@
                 <img src="{{ armadura.imagem.url }}" />
                 {{ armadura.nome }}
 
-                {% if armadura in player.armaduras %}
-                    <a href="vender/{{ armadura.pk }}">vender por {{ armadura.venda }}</a>
+                {% if armadura in player.armaduras.all %}
+                    <a href="vender/armadura/{{ armadura.pk }}">vender por {{ armadura.venda }}</a>
                 {% else %}
-                    <a href="comprar/{{ armadura.pk }}">comprar por {{ armadura.compra }}</a>
+                    <a href="comprar/armadura/{{ armadura.pk }}">comprar por {{ armadura.compra }}</a>
                 {% endif %}
                 <br />
 
@@ -72,10 +72,10 @@
                 <img src="{{ arma.imagem.url }}" />
                 {{ arma.nome }}
 
-                {% if arma in player.armas %}
-                    <a href="vender/{{ arma.pk }}">vender por {{ arma.venda }}</a>
+                {% if arma in player.armas.all %}
+                    <a href="vender/arma/{{ arma.pk }}">vender por {{ arma.venda }}</a>
                 {% else %}
-                    <a href="comprar/{{ arma.pk }}">comprar por {{ arma.compra }}</a>
+                    <a href="comprar/arma/{{ arma.pk }}">comprar por {{ arma.compra }}</a>
                 {% endif %}
                 <br />>
             {%  endfor %}

@@ -1,6 +1,7 @@
 # Create your views here.
 from django.shortcuts import render_to_response, render
 from django.shortcuts import redirect # Funcao para redirecionar o usuario
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.forms import UserCreationForm # Formulario de criacao de usuarios
 from django.contrib.auth.forms import AuthenticationForm # Formulario de autenticacao de usuarios
 from django.contrib.auth import login # funcao que salva o usuario na sessao
@@ -65,3 +66,32 @@ def loja(request):
     return render_to_response("loja.html", {"armas": armas,
                                             "armaduras": armaduras,
                                             "player": request.user.get_profile()})
+
+#pagina de compra de armaduras
+def comprar_armadura(request, item):
+    if not request.user.is_authenticated():
+        return redirect(logar)
+
+    armadura = get_object_or_404(Armadura, pk=item)
+    player = request.user.get_profile()
+
+    if player.carteira >= armadura.compra:
+        player.carteira = player.carteira - armadura.compra
+        player.armaduras.add(armadura) #https://docs.djangoproject.com/en/1.4/ref/models/relations/
+        player.save()
+
+    return redirect(loja)
+
+#pagina de venda de armaduras
+def vender_armadura(request, item):
+    if not request.user.is_authenticated():
+        return redirect(logar)
+
+    armadura = get_object_or_404(Armadura, pk=item)
+    player = request.user.get_profile()
+
+    if armadura in player.armaduras.all():
+        player.carteira = player.carteira + armadura.venda
+        player.armaduras.remove(armadura) #https://docs.djangoproject.com/en/1.4/ref/models/relations/
+
+    return redirect(loja)

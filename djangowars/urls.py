@@ -12,6 +12,10 @@ urlpatterns = patterns('',
                        url(r'^login/$', djangowars.views.logar), # pagina de login
                        url(r'^crimes/$', djangowars.views.crimes), # pagina de login
                        url(r'^loja/$', djangowars.views.loja), # pagina de loja
+                       url(r'^loja/comprar/armadura/(\d+)/$', djangowars.views.comprar_armadura), # pagina de loja
+                       url(r'^loja/vender/armadura/(\d+)/$', djangowars.views.vender_armadura), # pagina de loja
+                       #url(r'^compra/arma/(\d+)/$', djangowars.views.compra_arma), # pagina de loja
+                       #url(r'^venda/arma/(\d+)/$', djangowars.views.venda_arma), # pagina de loja
                        
                        # Uncomment the next line to enable the admin:
                        url(r'^admin/', include(admin.site.urls)),
