@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm # Formulario de criacao d
 from django.contrib.auth.forms import AuthenticationForm # Formulario de autenticacao de usuarios
 from django.contrib.auth import login # funcao que salva o usuario na sessao
 from djangowars.itens.models import Arma, Armadura #importa as armas e armaduras
+from random import randint
 
 
 # pagina inicial do projeto django-wars
@@ -53,6 +54,34 @@ def crimes(request):
         return redirect(logar)
     return render_to_response("crimes.html", {"player": request.user.get_profile(),
                                               "vida": request.user.get_profile().vida * 10}) # para exibir o total de vida do usuario
+
+def cometer_crime1(request):
+    if not request.user.is_authenticated():
+        return redirect(logar)
+
+    player = request.user.get_profile()
+
+    if player.energia_atual < 1:
+        return redirect(crimes)
+
+    player.carteira = player.carteira + (11 * randint(0, player.ataque))
+    player.energia_atual = player.energia_atual - 1
+    player.save()
+    return redirect(crimes)
+
+def cometer_crime2(request):
+    if not request.user.is_authenticated():
+        return redirect(logar)
+
+    player = request.user.get_profile()
+
+    if player.energia_atual < 2 or player.nivel < 2:
+        return redirect(crimes)
+
+    player.carteira = player.carteira + (21 * randint(0, player.ataque))
+    player.energia_atual = player.energia_atual - 2
+    player.save()
+    return redirect(crimes)
 
 
 # pagina da loja:
