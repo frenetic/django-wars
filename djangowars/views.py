@@ -93,5 +93,6 @@ def vender_armadura(request, item):
     if armadura in player.armaduras.all():
         player.carteira = player.carteira + armadura.venda
         player.armaduras.remove(armadura) #https://docs.djangoproject.com/en/1.4/ref/models/relations/
+        player.save()
 
     return redirect(loja)
