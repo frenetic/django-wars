@@ -11,6 +11,7 @@ urlpatterns = patterns('',
                        url(r'^registrar/$', djangowars.views.registrar), # pagina de cadastro
                        url(r'^login/$', djangowars.views.logar), # pagina de login
                        url(r'^crimes/$', djangowars.views.crimes), # pagina de login
+                       url(r'^loja/$', djangowars.views.loja), # pagina de loja
                        
                        # Uncomment the next line to enable the admin:
                        url(r'^admin/', include(admin.site.urls)),

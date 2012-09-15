@@ -4,6 +4,7 @@ from django.shortcuts import redirect # Funcao para redirecionar o usuario
 from django.contrib.auth.forms import UserCreationForm # Formulario de criacao de usuarios
 from django.contrib.auth.forms import AuthenticationForm # Formulario de autenticacao de usuarios
 from django.contrib.auth import login # funcao que salva o usuario na sessao
+from djangowars.itens.models import Arma, Armadura #importa as armas e armaduras
 
 
 # pagina inicial do projeto django-wars
@@ -51,3 +52,16 @@ def crimes(request):
         return redirect(logar)
     return render_to_response("crimes.html", {"player": request.user.get_profile(),
                                               "vida": request.user.get_profile().vida * 10}) # para exibir o total de vida do usuario
+
+
+# pagina da loja:
+def loja(request):
+    if not request.user.is_authenticated():
+        return redirect(logar)
+
+    armas = Arma.objects.filter(secreta=False).order_by('compra', '-venda')
+    armaduras = Armadura.objects.filter(secreta=False).order_by('compra', '-venda')
+
+    return render_to_response("loja.html", {"armas": armas,
+                                            "armaduras": armaduras,
+                                            "player": request.user.get_profile()})
