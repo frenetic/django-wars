@@ -10,7 +10,7 @@ class Arma(models.Model):
     imagem = models.ImageField(upload_to="armas") #imagem do item
     
     #nome do item
-    nome = models.TextField()
+    nome = models.CharField(max_length=100)
     
     def __unicode__(self):
         return self.nome
@@ -25,7 +25,7 @@ class Armadura(models.Model):
     imagem = models.ImageField(upload_to="armaduras") #imagem do item
     
     #nome do item
-    nome = models.TextField()
+    nome = models.models.CharField(max_length=100)
     
     def __unicode__(self):
         return self.nome
