@@ -10,6 +10,7 @@ urlpatterns = patterns('',
                        url(r'^$', djangowars.views.index),
                        url(r'^registrar/$', djangowars.views.registrar), # pagina de cadastro
                        url(r'^login/$', djangowars.views.logar), # pagina de login
+                       url(r'^crimes/$', djangowars.views.crimes), # pagina de login
                        
                        # Uncomment the next line to enable the admin:
                        url(r'^admin/', include(admin.site.urls)),

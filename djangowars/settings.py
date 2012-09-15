@@ -166,4 +166,4 @@ LOGGING = {
 # configurando o usuario do django para ser
 # o usuario definido pelo projeto e nao o usuario
 # padrao do Django.contrib.auth
-AUTH_PROFILE_MODULE = 'djangowars.players.Player'
+AUTH_PROFILE_MODULE = 'players.Player'
