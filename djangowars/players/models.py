@@ -3,6 +3,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
+#importamos as armas e armaduras
+from djangowars.itens.models import Arma, Armadura
+
+
 # Create your models here.
 class Player(models.Model):
     #fazendo o relacionamento entre o usuario Django e o player
@@ -29,6 +33,14 @@ class Player(models.Model):
     hp_update = models.DateTimeField(auto_now_add=True) # 1 de hp a cada 2 minutos
     energia_update = models.DateTimeField(auto_now_add=True) # 1 de energia a cada minuto
     raiva_update = models.DateTimeField(auto_now_add=True) # 1 de raiva a cada 5 minutos
+
+    #relacionamentos
+    armas = models.ManyToManyField(Arma)
+    armaduras = models.ManyToManyField(Armadura)
+
+    #itens ativos
+    arma_ativa = models.ForeignKey(Arma, null=True, related_name="+")
+    armadura_ativa = models.ForeignKey(Armadura, null=True, related_name="+")
 
 
 # funcao que cria o player toda vez que um usuario for criado pelo Django.contrib.auth
