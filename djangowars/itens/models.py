@@ -25,7 +25,7 @@ class Armadura(models.Model):
     imagem = models.ImageField(upload_to="armaduras") #imagem do item
     
     #nome do item
-    nome = models.models.CharField(max_length=100)
+    nome = models.CharField(max_length=100)
     
     def __unicode__(self):
         return self.nome
