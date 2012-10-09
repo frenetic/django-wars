@@ -152,3 +152,35 @@ def vender_armadura(request, item):
         player.save()
 
     return redirect(loja)
+
+
+#pagina de compra de armas
+def comprar_arma(request, item):
+    if not request.user.is_authenticated():
+        return redirect(logar)
+
+    arma = get_object_or_404(Arma, pk=item)
+    player = request.user.get_profile()
+
+    if player.carteira >= arma.compra:
+        player.carteira = player.carteira - arma.compra
+        player.arma.add(armadura) #https://docs.djangoproject.com/en/1.4/ref/models/relations/
+        player.save()
+
+    return redirect(loja)
+
+
+#pagina de venda de armas
+def vender_arma(request, item):
+    if not request.user.is_authenticated():
+        return redirect(logar)
+
+    arma = get_object_or_404(Arma, pk=item)
+    player = request.user.get_profile()
+
+    if arma in player.arma.all():
+        player.carteira = player.carteira + arma.venda
+        player.arma.remove(arma) #https://docs.djangoproject.com/en/1.4/ref/models/relations/
+        player.save()
+
+    return redirect(loja)
