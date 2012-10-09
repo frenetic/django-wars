@@ -9,10 +9,18 @@ from djangowars.itens.models import Arma, Armadura #importa as armas e armaduras
 from random import randint
 
 
+
+
 # pagina inicial do projeto django-wars
 def index(request):
     return render_to_response("index.html")
 
+
+
+
+###############################################################################
+###                Paginas de interacao do usuario no sistema               ###
+###############################################################################
 
 # pagina de cadastro de jogador
 def registrar(request):
@@ -48,6 +56,12 @@ def logar(request):
     return render(request, "logar.html", {"form": AuthenticationForm()})
 
 
+
+
+###############################################################################
+###           Paginas de crimes (listagem e execucao dos crimes)            ###
+###############################################################################
+
 # pagina que lista os crimes
 def crimes(request):
     if not request.user.is_authenticated():
@@ -55,6 +69,8 @@ def crimes(request):
     return render_to_response("crimes.html", {"player": request.user.get_profile(),
                                               "vida": request.user.get_profile().vida * 10}) # para exibir o total de vida do usuario
 
+
+# cometendo o crime de nivel 1
 def cometer_crime1(request):
     if not request.user.is_authenticated():
         return redirect(logar)
@@ -69,6 +85,8 @@ def cometer_crime1(request):
     player.save()
     return redirect(crimes)
 
+
+# cometendo o crime de nivel 2
 def cometer_crime2(request):
     if not request.user.is_authenticated():
         return redirect(logar)
@@ -84,6 +102,13 @@ def cometer_crime2(request):
     return redirect(crimes)
 
 
+
+
+###############################################################################
+###                        Paginas da loja                                  ###
+###    Listagem de itens, acoes de compras e vendas de armas e armaduras    ###
+###############################################################################
+
 # pagina da loja:
 def loja(request):
     if not request.user.is_authenticated():
@@ -95,6 +120,7 @@ def loja(request):
     return render_to_response("loja.html", {"armas": armas,
                                             "armaduras": armaduras,
                                             "player": request.user.get_profile()})
+
 
 #pagina de compra de armaduras
 def comprar_armadura(request, item):
@@ -110,6 +136,7 @@ def comprar_armadura(request, item):
         player.save()
 
     return redirect(loja)
+
 
 #pagina de venda de armaduras
 def vender_armadura(request, item):
