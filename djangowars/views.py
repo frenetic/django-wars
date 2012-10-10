@@ -1,12 +1,14 @@
 # Create your views here.
-from django.shortcuts import render_to_response, render
-from django.shortcuts import redirect # Funcao para redirecionar o usuario
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render_to_response, render # funcoes de renderizacao dos templates
+from django.shortcuts import redirect # Funcao para executar um http-redirect
+from django.shortcuts import get_object_or_404 # funcao para buscar um item no banco de dados. Se nao encontrar, retorna um http 404 - page not found
+
 from django.contrib.auth.forms import UserCreationForm # Formulario de criacao de usuarios
 from django.contrib.auth.forms import AuthenticationForm # Formulario de autenticacao de usuarios
 from django.contrib.auth import login # funcao que salva o usuario na sessao
-from djangowars.itens.models import Arma, Armadura #importa as armas e armaduras
-from random import randint
+
+from djangowars.itens.models import Arma, Armadura #importa os modelos de armas e armaduras
+from random import randint # funcao para escolher um numero aleatorio
 
 
 
@@ -19,7 +21,7 @@ def index(request):
 
 
 ###############################################################################
-###                Paginas de interacao do usuario no sistema               ###
+###              Paginas de interacao do usuario no sistema                 ###
 ###############################################################################
 
 # pagina de cadastro de jogador
@@ -105,7 +107,7 @@ def cometer_crime2(request):
 
 
 ###############################################################################
-###                        Paginas da loja                                  ###
+###                             Paginas da loja                             ###
 ###    Listagem de itens, acoes de compras e vendas de armas e armaduras    ###
 ###############################################################################
 
@@ -184,3 +186,23 @@ def vender_arma(request, item):
         player.save()
 
     return redirect(loja)
+
+
+
+
+###############################################################################
+###                  Paginas do inventario do usuario                       ###
+###                       listagem e troca de itens                         ###
+###############################################################################
+
+#pagina de inventario - lista os itens do usuario
+def inventario(request):
+    if not request.user.is_authenticated():
+        return redirect(logar)
+
+    armas = Arma.objects.filter(secreta=False).order_by('compra', '-venda')
+    armaduras = Armadura.objects.filter(secreta=False).order_by('compra', '-venda')
+
+    return render_to_response("inventario.html", {"armas": armas,
+                                                  "armaduras": armaduras,
+                                                  "player": request.user.get_profile()})
