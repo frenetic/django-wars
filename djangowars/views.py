@@ -200,9 +200,6 @@ def inventario(request):
     if not request.user.is_authenticated():
         return redirect(logar)
 
-    armas = Arma.objects.filter(secreta=False).order_by('compra', '-venda')
-    armaduras = Armadura.objects.filter(secreta=False).order_by('compra', '-venda')
-
     return render_to_response("inventario.html", {"armas": armas,
                                                   "armaduras": armaduras,
                                                   "player": request.user.get_profile()})
