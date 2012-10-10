@@ -166,7 +166,7 @@ def comprar_arma(request, item):
 
     if player.carteira >= arma.compra:
         player.carteira = player.carteira - arma.compra
-        player.arma.add(armadura) #https://docs.djangoproject.com/en/1.4/ref/models/relations/
+        player.armas.add(arma) #https://docs.djangoproject.com/en/1.4/ref/models/relations/
         player.save()
 
     return redirect(loja)
@@ -180,9 +180,9 @@ def vender_arma(request, item):
     arma = get_object_or_404(Arma, pk=item)
     player = request.user.get_profile()
 
-    if arma in player.arma.all():
+    if arma in player.armas.all():
         player.carteira = player.carteira + arma.venda
-        player.arma.remove(arma) #https://docs.djangoproject.com/en/1.4/ref/models/relations/
+        player.armas.remove(arma) #https://docs.djangoproject.com/en/1.4/ref/models/relations/
         player.save()
 
     return redirect(loja)

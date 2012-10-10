@@ -53,19 +53,19 @@
         <div class="container">
             Armadura Ativa: <br />
             {{ player.armadura_ativa.nome }}
-            {{ player.armadura_ativa.imagem.url }}
+            <img src="{{ player.armadura_ativa.imagem.url }}" />
             <br />
             <hr />
             
             Arma Ativa: <br />
             {{ player.arma_ativa.nome }}
-            {{ player.arma_ativa.imagem.url }}
+            <img src="{{ player.arma_ativa.imagem.url }}" />
             <br />
             <hr />
             
             
             <p>Armaduras:</p>
-            {% for armadura in player.armaduras %}
+            {% for armadura in player.armaduras.all %}
                 <img src="{{ armadura.imagem.url }}" />
                 {{ armadura.nome }}
                 <a href="equipar/armadura/{{ armadura.pk }}">Equipar</a>
@@ -75,7 +75,7 @@
             <hr />
             
             <p>Armas:</p>
-            {% for arma in player.armas %}
+            {% for arma in player.armas.all %}
                 <img src="{{ arma.imagem.url }}" />
                 {{ arma.nome }}
                 <a href="equipar/arma/{{ arma.pk }}">Equipar</a>
