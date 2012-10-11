@@ -22,6 +22,8 @@ urlpatterns = patterns('',
                        url(r'^loja/vender/arma/(\d+)/$', djangowars.views.vender_arma), # pagina de loja
                        
                        url(r'^inventario/$', djangowars.views.inventario),
+                       url(r'^inventario/equipar/armadura/(\d+)/$', djangowars.views.equipar_armadura),
+                       url(r'^inventario/equipar/arma/(\d+)/$', djangowars.views.equipar_arma),
                        
                        
                        # Uncomment the next line to enable the admin:
