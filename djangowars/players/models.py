@@ -41,6 +41,31 @@ class Player(models.Model):
     #itens ativos
     arma_ativa = models.ForeignKey(Arma, null=True, related_name="+")
     armadura_ativa = models.ForeignKey(Armadura, null=True, related_name="+")
+    
+    #pontos ao subir de nivel
+    pontos = models.PositiveSmallIntegerField(default=0)
+    
+    
+    #verifica se o player subiu de nivel
+    def level_up(self):
+        #definimos a quantidade de xp para cada nivel
+        experiencia_necessaria = {1: 10, 2: 20, 3: 30, 4: 50, 5: 80,
+                                  6: 130, 7: 210, 8: 340, 9: 480, 10: 630,
+                                  11: 790, 12: 970, 13: 1200, 14: 1600, 15: 2000,
+                                  16: 2500, 17: 3000, 18: 4000, 19: 5000, 20: 6000}
+        
+        if self.experiencia >= experiencia_necessaria[self.experiencia + 1]:
+            self.nivel = self.nivel + 1 #sobe de nivel
+            self.pontos = pontos + 5 #adiciona 5 pontos para o usuario distribuir
+            self.hp = self.vida * 10 #recupera a vida
+            self.energia_atual = self.energia #recupera a energia
+            self.raiva_atual = self.raiva #recupera a raiva
+            
+            return True
+        else:
+            return False
+
+
 
 
 # funcao que cria o player toda vez que um usuario for criado pelo Django.contrib.auth
