@@ -64,6 +64,78 @@ class Player(models.Model):
             return True
         else:
             return False
+    
+    
+    #funcao que recupera o player
+    def refresh(self):
+        #pega a hora atual
+        agora = datetime.datetime.now()
+        
+        
+        #verifica se o usuario tem menos HP do que deveria
+        if self.hp < self.vida * 10:
+            #verifica quanto tempo passou desde a ultima atualizacao do hp
+            tempo = agora - self.hp_update
+            #o hp atualiza a cada dois minutos
+            #verifica quantas vezes 2 minutos se passaram no intervalo de tempo
+            updates = tempo.total_seconds() // 120
+            
+            #verifica se houve algum update
+            if updates > 0:
+                #adiciona a quantidade de updates no hp
+                self.hp = self.hp + updates
+                #verifica se ficamos com mais hp do que o maximo permitido
+                if self.hp > self.vida * 10:
+                    self.hp = self.vida * 10
+                #agora que verificou o ultimo update de hp, atualiza a variavel hp_update
+                self.hp_update = agora
+        else:
+            #se nao existe nenhum update para fazer, atualiza o hp_update
+            self.hp_update = agora
+        
+        
+        #verifica se o usuario tem menos energia do que deveria
+        if self.energia_atual < self.energia:
+            #verifica quanto tempo passou desde a ultima atualizacao do hp
+            tempo = agora - self.energia_update
+            #a energia atualiza a cada minuto
+            #verifica quantos minutos se passaram no intervalo de tempo
+            updates = tempo.total_seconds() // 60
+            
+            #verifica se houve algum update
+            if updates > 0:
+                #adiciona a quantidade de updates na energia
+                self.energia_atual = self.energia_atual + updates
+                #verifica se ficamos com mais energia do que o maximo permitido
+                if self.energia_atual > self.energia:
+                    self.energia_atual = self.energia
+                #agora que verificou o ultimo update da energia, atualiza a variavel energia_update
+                self.energia_update = agora
+        else:
+            #se nao existe nenhum update para fazer, atualiza o energia_update
+            self.energia_update = agora
+        
+        
+        #verifica se o usuario tem menos raiva do que deveria
+        if self.raiva_atual < self.raiva:
+            #verifica quanto tempo passou desde a ultima atualizacao da raiva
+            tempo = agora - self.raiva_update
+            #a raiva atualiza a cada 5 minutos
+            #verifica quantos minutos se passaram no intervalo de tempo
+            updates = tempo.total_seconds() // 300
+            
+            #verifica se houve algum update
+            if updates > 0:
+                #adiciona a quantidade de updates na raiva
+                self.raiva_atual = self.raiva_atual + updates
+                #verifica se ficamos com mais raiva do que o maximo permitido
+                if self.raiva_atual > self.raiva:
+                    self.raiva_atual = self.raiva
+                #agora que verificou o ultimo update da raiva, atualiza a variavel raiva_update
+                self.energia_update = agora
+        else:
+            #se nao existe nenhum update para fazer, atualiza o raiva_update
+            self.energia_update = agora
 
 
 
