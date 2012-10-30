@@ -68,6 +68,12 @@ def logar(request):
 def crimes(request):
     if not request.user.is_authenticated():
         return redirect(logar)
+    
+    #da um refrash no hp, energia e raiva do player
+    player = request.user.get_profile()
+    player.refresh()
+    player.save()
+    
     return render_to_response("crimes.html", {"player": request.user.get_profile(),
                                               "vida": request.user.get_profile().vida * 10}) # para exibir o total de vida do usuario
 
