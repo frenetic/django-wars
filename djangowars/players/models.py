@@ -57,9 +57,9 @@ class Player(models.Model):
                                   11: 790, 12: 970, 13: 1200, 14: 1600, 15: 2000,
                                   16: 2500, 17: 3000, 18: 4000, 19: 5000, 20: 6000}
         
-        if self.experiencia >= experiencia_necessaria[self.experiencia + 1]:
+        if self.experiencia >= experiencia_necessaria[self.nivel + 1]:
             self.nivel = self.nivel + 1 #sobe de nivel
-            self.pontos = pontos + 5 #adiciona 5 pontos para o usuario distribuir
+            self.pontos = self.pontos + 5 #adiciona 5 pontos para o usuario distribuir
             self.hp = self.vida * 10 #recupera a vida
             self.energia_atual = self.energia #recupera a energia
             self.raiva_atual = self.raiva #recupera a raiva
