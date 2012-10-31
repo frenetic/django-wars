@@ -6,6 +6,9 @@ from django.db.models.signals import post_save
 #importamos as armas e armaduras
 from djangowars.itens.models import Arma, Armadura
 
+#importamos a biblioteca datetime
+import datetime
+
 
 # Create your models here.
 class Player(models.Model):
