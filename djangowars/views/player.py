@@ -6,8 +6,6 @@ from django.contrib.auth.forms import UserCreationForm # Formulario de criacao d
 from django.contrib.auth.forms import AuthenticationForm # Formulario de autenticacao de usuarios
 from django.contrib.auth import login # funcao que salva o usuario na sessao
 
-from djangowars.views.crimes import crimes # importamos essa view para fazer o redirect ao logar
-
 
 
 
@@ -37,7 +35,7 @@ def logar(request):
             #se o formulario for valido significa que o Django conseguiu encontrar o usuario no banco de dados
             #agora, basta logar o usuario e ser feliz.
             login(request, form.get_user())
-            return redirect(crimes) # redireciona o usuario logado para a pagina inicial
+            return redirect("pagina_de_crimes") # redireciona o usuario logado para a pagina inicial
         else:
             return render(request, "logar.html", {"form": form})
     

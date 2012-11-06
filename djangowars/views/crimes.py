@@ -4,15 +4,13 @@ from django.shortcuts import redirect # Funcao para executar um http-redirect
 
 from random import randint # funcao para escolher um numero aleatorio
 
-from djangowars.views.player import logar #precisamos importar essa view para usar nos redirects
-
 
 
 
 # pagina que lista os crimes
 def crimes(request):
     if not request.user.is_authenticated():
-        return redirect(logar)
+        return redirect('pagina_de_login')
     
     #da um refrash no hp, energia e raiva do player
     player = request.user.get_profile()
@@ -26,7 +24,7 @@ def crimes(request):
 # cometendo o crime de nivel 1
 def cometer_crime1(request):
     if not request.user.is_authenticated():
-        return redirect(logar)
+        return redirect('pagina_de_login')
 
     player = request.user.get_profile()
 
@@ -49,7 +47,7 @@ def cometer_crime1(request):
 # cometendo o crime de nivel 2
 def cometer_crime2(request):
     if not request.user.is_authenticated():
-        return redirect(logar)
+        return redirect('pagina_de_login')
 
     player = request.user.get_profile()
 

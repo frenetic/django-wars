@@ -5,15 +5,13 @@ from django.shortcuts import get_object_or_404 # funcao para buscar um item no b
 
 from djangowars.itens.models import Arma, Armadura #importa os modelos de armas e armaduras
 
-from djangowars.views.player import logar #precisamos importar essa view para usar nos redirects
-
 
 
 
 #pagina de inventario - lista os itens do usuario
 def inventario(request):
     if not request.user.is_authenticated():
-        return redirect(logar)
+        return redirect('pagina_de_login')
 
     return render_to_response("inventario.html", {"player": request.user.get_profile()})
 
@@ -21,7 +19,7 @@ def inventario(request):
 #pagina para equipar uma armadura
 def equipar_armadura(request, item):
     if not request.user.is_authenticated():
-        return redirect(logar)
+        return redirect('pagina_de_login')
     
     #verifica se a armadura existe no banco de dados
     armadura = get_object_or_404(Armadura, pk=item)
@@ -41,7 +39,7 @@ def equipar_armadura(request, item):
 #pagina para equipar uma arma
 def equipar_arma(request, item):
     if not request.user.is_authenticated():
-        return redirect(logar)
+        return redirect('pagina_de_login')
     
     #verifica se a arma existe no banco de dados
     arma = get_object_or_404(Arma, pk=item)

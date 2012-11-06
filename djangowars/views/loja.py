@@ -5,15 +5,13 @@ from django.shortcuts import get_object_or_404 # funcao para buscar um item no b
 
 from djangowars.itens.models import Arma, Armadura #importa os modelos de armas e armaduras
 
-from djangowars.views.player import logar #precisamos importar essa view para usar nos redirects
-
 
 
 
 # pagina da loja:
 def loja(request):
     if not request.user.is_authenticated():
-        return redirect(logar)
+        return redirect('pagina_de_login')
 
     armas = Arma.objects.filter(secreta=False).order_by('compra', '-venda')
     armaduras = Armadura.objects.filter(secreta=False).order_by('compra', '-venda')
@@ -26,7 +24,7 @@ def loja(request):
 #pagina de compra de armaduras
 def comprar_armadura(request, item):
     if not request.user.is_authenticated():
-        return redirect(logar)
+        return redirect('pagina_de_login')
 
     armadura = get_object_or_404(Armadura, pk=item)
     player = request.user.get_profile()
@@ -42,7 +40,7 @@ def comprar_armadura(request, item):
 #pagina de venda de armaduras
 def vender_armadura(request, item):
     if not request.user.is_authenticated():
-        return redirect(logar)
+        return redirect('pagina_de_login')
 
     armadura = get_object_or_404(Armadura, pk=item)
     player = request.user.get_profile()
@@ -58,7 +56,7 @@ def vender_armadura(request, item):
 #pagina de compra de armas
 def comprar_arma(request, item):
     if not request.user.is_authenticated():
-        return redirect(logar)
+        return redirect('pagina_de_login')
 
     arma = get_object_or_404(Arma, pk=item)
     player = request.user.get_profile()
@@ -74,7 +72,7 @@ def comprar_arma(request, item):
 #pagina de venda de armas
 def vender_arma(request, item):
     if not request.user.is_authenticated():
-        return redirect(logar)
+        return redirect('pagina_de_login')
 
     arma = get_object_or_404(Arma, pk=item)
     player = request.user.get_profile()
