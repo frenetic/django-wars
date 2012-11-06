@@ -1,10 +1,15 @@
 from django.conf.urls import patterns, include, url
 
-import djangowars.views
+import djangowars.views.crimes
+import djangowars.views.inventario
+import djangowars.views.loja
+import djangowars.views.player
+import djangowars.views.site
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
+
 
 urlpatterns = patterns('',
                        url(r'^$', djangowars.views.site.index),
