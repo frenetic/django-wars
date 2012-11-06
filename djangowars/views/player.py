@@ -6,6 +6,8 @@ from django.contrib.auth.forms import UserCreationForm # Formulario de criacao d
 from django.contrib.auth.forms import AuthenticationForm # Formulario de autenticacao de usuarios
 from django.contrib.auth import login # funcao que salva o usuario na sessao
 
+from djangowars.views.crimes import crimes # importamos essa view para fazer o redirect ao logar
+
 
 
 

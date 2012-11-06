@@ -5,6 +5,8 @@ from django.shortcuts import get_object_or_404 # funcao para buscar um item no b
 
 from djangowars.itens.models import Arma, Armadura #importa os modelos de armas e armaduras
 
+from djangowars.views.player import logar #precisamos importar essa view para usar nos redirects
+
 
 
 

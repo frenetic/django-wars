@@ -4,6 +4,8 @@ from django.shortcuts import redirect # Funcao para executar um http-redirect
 
 from random import randint # funcao para escolher um numero aleatorio
 
+from djangowars.views.player import logar #precisamos importar essa view para usar nos redirects
+
 
 
 
