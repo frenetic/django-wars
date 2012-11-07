@@ -1,5 +1,5 @@
 # Create your views here.
-from django.shortcuts import render # funcoes de renderizacao dos templates
+from django.shortcuts import render, render_to_response # funcoes de renderizacao dos templates
 from django.shortcuts import redirect # Funcao para executar um http-redirect
 
 from django.contrib.auth.forms import UserCreationForm # Formulario de criacao de usuarios
