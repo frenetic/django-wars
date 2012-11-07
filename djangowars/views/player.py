@@ -41,3 +41,17 @@ def logar(request):
     
     #se nenhuma informacao for passada, exibe a pagina de login com o formulario
     return render(request, "logar.html", {"form": AuthenticationForm()})
+
+
+# pagina de stats do jogador
+def stats(request):
+    if not request.user.is_authenticated():
+        return redirect('pagina_de_login')
+    
+    #da um refrash no hp, energia e raiva do player
+    player = request.user.get_profile()
+    player.refresh()
+    player.save()
+    
+    return render_to_response("stats.html", {"player": player,
+                                              "vida": player.vida * 10}) # para exibir o total de vida do usuario
