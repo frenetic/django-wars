@@ -32,6 +32,7 @@ urlpatterns = patterns('',
                        url(r'^inventario/equipar/arma/(\d+)/$', djangowars.views.inventario.equipar_arma),
                        
                        url(r'^stats/$', djangowars.views.player.stats, name='pagina_de_stats'),
+                       url(r'^stats/adicionar/(\w+)$', djangowars.views.player.adicionar),
                        
                        
                        # Uncomment the next line to enable the admin:
