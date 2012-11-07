@@ -55,3 +55,37 @@ def stats(request):
     
     return render_to_response("stats.html", {"player": player,
                                               "vida": player.vida * 10}) # para exibir o total de vida do usuario
+
+
+# view que adiciona pontos aos stats do jogador
+def adicionar(request, atributo):
+    if not request.user.is_authenticated():
+        return redirect('pagina_de_login')
+    
+    
+    #pega o jogador logado
+    player = request.user.get_profile()
+    
+    #verifica se o jogador ainda tem pontos para gastar
+    if player.pontos > 0:
+        #verifica o tipo do atributo para fazer a alteracao
+        if atributo.lower() == "ataque":
+            player.ataque = player.ataque + 1
+            player.pontos = player.pontos - 1
+        elif atributo.lower() == "defesa":
+            player.defesa = player.defesa + 1
+            player.pontos = player.pontos - 1
+        elif atributo.lower() == "vida":
+            player.vida = player.vida + 1
+            player.pontos = player.pontos - 1
+        elif atributo.lower() == "energia":
+            player.energia = player.energia + 1
+            player.pontos = player.pontos - 1
+        elif atributo.lower() == "raiva":
+            player.raiva = player.raiva + 1
+            player.pontos = player.pontos - 1
+        
+        player.save()
+    
+    #volta para a pagina de stats
+    return redirect(stats)
