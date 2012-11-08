@@ -135,10 +135,10 @@ class Player(models.Model):
                 if self.raiva_atual > self.raiva:
                     self.raiva_atual = self.raiva
                 #agora que verificou o ultimo update da raiva, atualiza a variavel raiva_update
-                self.energia_update = agora
+                self.raiva_update = agora
         else:
             #se nao existe nenhum update para fazer, atualiza o raiva_update
-            self.energia_update = agora
+            self.raiva_update = agora
 
 
 
