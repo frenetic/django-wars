@@ -3,6 +3,7 @@ from django.conf.urls import patterns, include, url
 import djangowars.views.crimes
 import djangowars.views.inventario
 import djangowars.views.loja
+import djangowars.views.luta
 import djangowars.views.player
 import djangowars.views.site
 
@@ -33,6 +34,8 @@ urlpatterns = patterns('',
                        
                        url(r'^stats/$', djangowars.views.player.stats, name='pagina_de_stats'),
                        url(r'^stats/adicionar/(\w+)$', djangowars.views.player.adicionar),
+                       
+                       url(r'^alvos/$', djangowars.views.luta.alvos, name='pagina_de_alvos'),
                        
                        
                        # Uncomment the next line to enable the admin:
