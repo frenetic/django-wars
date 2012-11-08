@@ -36,6 +36,7 @@ urlpatterns = patterns('',
                        url(r'^stats/adicionar/(\w+)$', djangowars.views.player.adicionar),
                        
                        url(r'^alvos/$', djangowars.views.luta.alvos, name='pagina_de_alvos'),
+                       url(r'^alvos/atacar/(\d+)/$', djangowars.views.luta.atacar),
                        
                        
                        # Uncomment the next line to enable the admin:
