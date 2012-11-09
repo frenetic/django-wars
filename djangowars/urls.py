@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 import djangowars.views.crimes
+import djangowars.views.hospital
 import djangowars.views.inventario
 import djangowars.views.loja
 import djangowars.views.luta
@@ -37,6 +38,10 @@ urlpatterns = patterns('',
                        
                        url(r'^alvos/$', djangowars.views.luta.alvos, name='pagina_de_alvos'),
                        url(r'^alvos/atacar/(\d+)/$', djangowars.views.luta.atacar),
+
+                       url(r'^hospital/$', djangowars.views.hospital.hospital, name='pagina_do_hospital'),
+                       url(r'^hospital/curar/(\d+)/$', djangowars.views.hospital.curar),
+                       url(r'^hospital/curar/x/$', djangowars.views.hospital.curarx),
                        
                        
                        # Uncomment the next line to enable the admin:
