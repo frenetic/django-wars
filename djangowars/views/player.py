@@ -6,6 +6,8 @@ from django.contrib.auth.forms import UserCreationForm # Formulario de criacao d
 from django.contrib.auth.forms import AuthenticationForm # Formulario de autenticacao de usuarios
 from django.contrib.auth import login # funcao que salva o usuario na sessao
 
+from djangowars.players.models import Player
+
 
 
 
@@ -89,3 +91,23 @@ def adicionar(request, atributo):
     
     #volta para a pagina de stats
     return redirect(stats)
+
+
+# pagina rank
+def rank(request):
+    if not request.user.is_authenticated():
+        return redirect('pagina_de_login')
+    
+    #da um refrash no hp, energia e raiva do player
+    jogador = request.user.get_profile()
+    jogador.refresh()
+    jogador.save()
+    
+    
+    #pega a lista de 50 jogadores ordenado pelo xp
+    rank = Player.objects.all().order_by("-experiencia")[:50]
+    
+    
+    return render_to_response("rank.html", {"player": jogador,
+                                              "vida": jogador.vida * 10,
+                                              "rank": rank})

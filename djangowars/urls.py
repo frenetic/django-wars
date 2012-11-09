@@ -43,6 +43,8 @@ urlpatterns = patterns('',
                        url(r'^hospital/curar/(\d+)/$', djangowars.views.hospital.curar),
                        url(r'^hospital/curar/x/$', djangowars.views.hospital.curarx),
                        
+                       url(r'^rank/$', djangowars.views.player.rank, name='pagina_do_rank'),
+                       
                        
                        # Uncomment the next line to enable the admin:
                        url(r'^admin/', include(admin.site.urls)),
