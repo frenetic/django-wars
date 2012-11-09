@@ -35,7 +35,7 @@ def cometer_crime1(request):
     player.energia_atual = player.energia_atual - 1
     
     #adiciona experiencia ao jogador
-    player.experiencia = player.experiencia + 10
+    player.experiencia = player.experiencia + 5
     
     #verifica se subiu de nivel
     player.level_up()
@@ -56,5 +56,13 @@ def cometer_crime2(request):
 
     player.carteira = player.carteira + (21 * randint(0, player.ataque))
     player.energia_atual = player.energia_atual - 2
+
+    #adiciona experiencia ao jogador
+    player.experiencia = player.experiencia + 10
+    
+    #verifica se subiu de nivel
+    player.level_up()
+
+
     player.save()
     return redirect(crimes)
