@@ -167,3 +167,11 @@ LOGGING = {
 # o usuario definido pelo projeto e nao o usuario
 # padrao do Django.contrib.auth
 AUTH_PROFILE_MODULE = 'players.Player'
+
+
+
+
+
+#configuracao do Heroku pro nosso projeto funcionar
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
