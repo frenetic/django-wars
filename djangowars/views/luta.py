@@ -106,7 +106,7 @@ def atacar(request, alvo_id):
     
     #pega o valor da arma do alvo
     if alvo.arma_ativa:
-        alvo = alvo.arma_ativa.poder
+        alvo_arma = alvo.arma_ativa.poder
     else:
         alvo_arma = 1
     
@@ -153,9 +153,9 @@ def atacar(request, alvo_id):
     elif alvo.hp == 0:
         vitoria = True
     elif alvo_hp - alvo.hp > jogador_hp - jogador.hp:
-        vitoria = False
-    else:
         vitoria = True
+    else:
+        vitoria = False
     
     
     #se o jogador ganhou, tira dinheiro do alvo e da ao jogador
