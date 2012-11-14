@@ -54,6 +54,54 @@
         </div>
         
         
+        
+        <!--informações do usuário-->
+        <div class="container" style="margin-bottom: 20px;">
+            
+            <div class="row">
+                
+                <div class="span2">
+                    <h3>{{ player.user.username }}</h3>
+                    
+                    <div style="font-size: 10px; font-weight: bold; margin-top: -20px;">
+                        Nível {{  player.nivel }} - ${{ player.carteira|floatformat:2 }} na carteira.
+                    </div>
+                </div><!--/span2-->
+                
+                
+                <div class="span10">
+                    
+                    <!--barra de hp-->
+                    <div class="span2">
+                        <strong>HP ({{ player.hp }}/{{ vida }}):</strong>
+                        <div class="progress">
+                            <div class="bar bar-danger" style="width: {% widthratio player.hp vida 100 %}%;"></div>
+                        </div>
+                    </div><!--/span2 /barra_de_hp-->
+                    
+                    <!--barra de energia-->
+                    <div class="span2">
+                        <strong>Energia ({{ player.energia_atual }}/{{ player.energia }}):</strong>
+                        <div class="progress">
+                            <div class="bar bar-success" style="width: {% widthratio player.energia_atual player.energia 100 %}%;"></div>
+                        </div>
+                    </div><!--/span2 /barra_de_energia-->
+                    
+                    <!--barra de raiva-->
+                    <div class="span2">
+                        <strong>Raiva ({{ player.raiva_atual }}/{{ player.raiva }}):</strong>
+                        <div class="progress">
+                            <div class="bar bar-warning" style="width: {% widthratio player.raiva_atual player.raiva 100 %}%;"></div>
+                        </div>
+                    </div><!--/span2 /barra_de_raiva-->
+                    
+                </div><!--/span10-->
+                
+            </div><!--/row-->
+            
+        </div><!--/container-->
+        
+        
         {% block conteudo %}
         {% endblock %}
         
