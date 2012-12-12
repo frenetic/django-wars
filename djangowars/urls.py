@@ -54,9 +54,3 @@ urlpatterns = patterns('',
                        # Uncomment the admin/doc line below to enable admin documentation:
                        # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 )
-
-
-#gambiarra para servir arquivos estaticos
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
-urlpatterns += staticfiles_urlpatterns()
