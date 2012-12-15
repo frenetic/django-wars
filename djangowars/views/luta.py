@@ -62,6 +62,11 @@ def atacar(request, alvo_id):
     jogador = request.user.get_profile()
     
     
+    #verifica se o jogador e o alvo sao a mesma pessoa
+    if jogador == alvo:
+        return redirect('pagina_de_alvos')
+    
+    
     #verifica se a experiencia do alvo eh menor que 60% da experiencia do atacante
     if jogador.experiencia * 0.6 > alvo.experiencia:
         return redirect(alvos)
