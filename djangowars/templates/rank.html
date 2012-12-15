@@ -12,11 +12,11 @@
         {% if player.raiva > 0 %}
         <!--lista de rank com possibilidade de atacar os n00bs-->
             {% for alvo in rank %}
-                <p>{{ alvo.user.username }} - Level {{ alvo.nivel }} - <a href="atacar/{{ alvo.id }}">ATACAR!!!</a></p>
+                <p>{{ alvo.user.username }} - Level {{ alvo.nivel }} - <a href="{% url pagina_de_alvos %}atacar/{{ alvo.id }}">ATACAR!!!</a></p>
             {% endfor %}
         {% else %}
             {% for alvo in rank %}
-                <p>{{ alvo.user.username }} - Level {{ alvo.nivel }} - <a href="atacar/{{ alvo.id }}">ATACAR!!!</a></p>
+                <p>{{ alvo.user.username }} - Level {{ alvo.nivel }} - <a href="{% url pagina_de_alvos %}atacar/{{ alvo.id }}">ATACAR!!!</a></p>
             {% endfor %}
         {% endif %}
 
