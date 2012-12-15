@@ -16,7 +16,7 @@ admin.autodiscover()
 
 
 urlpatterns = patterns('',
-                       url(r'^$', djangowars.views.site.index),
+                       url(r'^$', djangowars.views.site.index, name='pagina_inicial'),
                        
                        url(r'^registrar/$', djangowars.views.player.registrar, name='pagina_de_registro'), # pagina de cadastro
                        url(r'^login/$', djangowars.views.player.logar, name='pagina_de_login'), # pagina de login
@@ -24,6 +24,8 @@ urlpatterns = patterns('',
                        url(r'^crimes/$', djangowars.views.crimes.crimes, name='pagina_de_crimes'),
                        url(r'^crimes/cometer/1/$', djangowars.views.crimes.cometer_crime1),
                        url(r'^crimes/cometer/2/$', djangowars.views.crimes.cometer_crime2),
+                       url(r'^crimes/cometer/3/$', djangowars.views.crimes.cometer_crime3),
+                       url(r'^crimes/cometer/4/$', djangowars.views.crimes.cometer_crime4),
                        
                        url(r'^loja/$', djangowars.views.loja.loja, name='pagina_da_loja'), # pagina de loja
                        url(r'^loja/comprar/armadura/(\d+)/$', djangowars.views.loja.comprar_armadura), # pagina de loja

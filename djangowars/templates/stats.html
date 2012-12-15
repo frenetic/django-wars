@@ -8,26 +8,15 @@
 
 {% block conteudo %}
     <div class="container">
-        <p>
-            Informações do usuário:
-            Nível {{  player.nivel }}
-            |
-            Energia {{  player.energia_atual }}/{{ player.energia }}
-            |
-            Raiva {{ player.raiva_atual }}/{{ player.raiva }}
-            HP: {{ player.hp }}/{{ vida }}
-            |
-            Carteira {{ player.carteira }}
-        </p>
 
         <!--lista de crimes que podem ser cometidos-->
         <h3>Stats</h3>
         
-        <p>Ataque: {{ player.ataque }} {% if player.pontos > 0 %}<a href="adicionar/ataque">+1</a>{% endif %}</p>
-        <p>Defesa: {{ player.defesa }} {% if player.pontos > 0 %}<a href="adicionar/defesa">+1</a>{% endif %}</p>
-        <p>Vida: {{ vida }} {% if player.pontos > 0 %}<a href="adicionar/vida">+1</a>{% endif %}</p>
-        <p>Energia: {{ player.energia }} {% if player.pontos > 0 %}<a href="adicionar/energia">+1</a>{% endif %}</p>
-        <p>Raiva: {{ player.raiva }} {% if player.pontos > 0 %}<a href="adicionar/raiva">+1</a>{% endif %}</p>
+        <p>Ataque: {{ player.ataque }} {% if player.pontos > 0 %}<a href="adicionar/ataque" class="btn btn-info btn-mini">+1</a>{% endif %}</p>
+        <p>Defesa: {{ player.defesa }} {% if player.pontos > 0 %}<a href="adicionar/defesa" class="btn btn-info btn-mini">+1</a>{% endif %}</p>
+        <p>Vida: {{ vida }} {% if player.pontos > 0 %}<a href="adicionar/vida" class="btn btn-info btn-mini">+1</a>{% endif %}</p>
+        <p>Energia: {{ player.energia }} {% if player.pontos > 0 %}<a href="adicionar/energia" class="btn btn-info btn-mini">+1</a>{% endif %}</p>
+        <p>Raiva: {{ player.raiva }} {% if player.pontos > 0 %}<a href="adicionar/raiva" class="btn btn-info btn-mini">+1</a>{% endif %}</p>
         <p>Pontos para gastar: {{ player.pontos }}</p>
         
     </div> <!-- /container -->

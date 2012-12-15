@@ -8,23 +8,84 @@
 
 {% block conteudo %}
     <div class="container">
-        <p>
-            Informações do usuário:
-            Nível {{  player.nivel }}
-            |
-            Energia {{  player.energia_atual }}/{{ player.energia }}
-            |
-            Raiva {{ player.raiva_atual }}/{{ player.raiva }}
-            HP: {{ player.hp }}/{{ vida }}
-            |
-            Carteira {{ player.carteira }}
-        </p>
-
-        <!--lista de crimes que podem ser cometidos-->
-        <p>Roubar carrocinha de cachorro quente. (1 de energia) (nível mínimo: 1) <a href="cometer/1">cometer crime</a></p>
-        <p>Roubar doce de criança. (2 de energia) (nível mínimo: 2) <a href="cometer/2">cometer crime</a></p>
-        <p>Roubar casa. (3 de energia) (nível mínimo: 3) <a href="cometer/3">cometer crime</a></p>
-        <p>Roubar banco. (4 de energia) (nível mínimo: 5)(requer arma) <a href="cometer/4">cometer crime</a></p>
-        <p>Roubar coisas secretas. (6 de energia) (nível mínimo: 8)(requer arma)(requer armadura) <a href="cometer/5">cometer crime</a></p>
+        
+        <div class="row">
+            <!--carrocinha de cachorro quente-->
+            <div class="span4">
+                <div class="well">
+                    <h4>Carrocinha de cachorro quente</h4>
+                    <p>
+                        Uma carrocinha de comeu morreu está parada, bem ali na frente, dando a maior bobeira.<br />
+                        Quanto será que o tio do dogão faturou para vocẽ hoje?
+                    </p>
+                    <p>
+                        <a href="cometer/1" class="btn btn-danger">Roubar Dogão (1 de energia)</a>
+                    </p>
+                </div>
+            </div>
+            
+            
+            <!--roubar a merenda dos n00bs-->
+            <div class="span4">
+                <div class="well">
+                    <h4>Dinheiro da merenda</h4>
+                    <p>
+                        Pequenos n00bs que estão indo para sua aulinha de Java com certeza ganharam um dinheirinho de "mainha" para o seu lanchinho.<br />
+                        Quanto será que tem no carteira.n00b.java.sux?
+                    </p>
+                    <p>
+                        <b><u>Observação:</u></b>
+                        para roubar um n00b você não pode ser n00b!<br />
+                        Seu nível deve ser maior que 1.
+                    </p>
+                    <p>
+                        <a href="cometer/2" class="btn btn-danger">Roubar dinheiro da merenda (2 de energia)</a>
+                    </p>
+                </div>
+            </div>
+            
+            
+            <!--;;lorem ipsum-->
+            <div class="span4">
+                <div class="well">
+                    <h4>Lorem Ipsum</h4>
+                    <p>
+                        Você quer fazer um Lorem Ipsum bem gostoso?<br />
+                        Então tem que ter ginga, além de <b>dolor sit amet</b>.
+                    </p>
+                    <p>
+                        <b><u>Observação:</u></b>
+                        Você precisa de nível 3, e um <b>dolor sit amet</b>.<br />
+                        Se voce não possuir <b>dolor sit amet</b>, uma arma serve.
+                    </p>
+                    <p>
+                        <a href="cometer/3" class="btn btn-danger">Lorem Ipsum (4 de energia)</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <!--carrocinha de cachorro quente-->
+            <div class="span6 offset3">
+                <div class="well">
+                    <h2>Ataque ao banco central</h2>
+                    <p>
+                        O grande golpe na vida de um vilão do crime pode chegar.<br />
+                        Mas é bom ter cuidado, a vida é dura, mas as recompensas podem por um sorriso na cara dos meliantes...
+                    </p>
+                    <p>
+                        <b><u>Observação:</u></b>
+                        Você precisa de nível 5, arma, armadura e coragem...<br />
+                        Vocẽ pode morrer tentando...
+                    </p>
+                    <p>
+                        <a href="cometer/4" class="btn btn-danger">Atacar Banco Central (10 de energia)</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
     </div> <!-- /container -->
 {% endblock %}

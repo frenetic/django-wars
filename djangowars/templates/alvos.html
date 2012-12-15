@@ -8,17 +8,6 @@
 
 {% block conteudo %}
     <div class="container">
-        <p>
-            Informações do usuário:
-            Nível {{  player.nivel }}
-            |
-            Energia {{  player.energia_atual }}/{{ player.energia }}
-            |
-            Raiva {{ player.raiva_atual }}/{{ player.raiva }}
-            HP: {{ player.hp }}/{{ vida }}
-            |
-            Carteira {{ player.carteira }}
-        </p>
 
         <!--lista de alvos-->
         {% for alvo in alvos %}
