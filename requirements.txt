@@ -1,4 +1,4 @@
-Django==1.4.1
+Django==1.11.29
 psycopg2==2.4.5
 dj-database-url==0.2.0
 pil==1.1.7
